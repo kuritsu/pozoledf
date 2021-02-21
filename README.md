@@ -58,21 +58,8 @@ TODO: Add diagram.
 
 ### Infrastructure
 
-You will need the following machines running RHEL 7|8/CentOS 7|8 (we suggest you use [Terraform](https://www.terraform.io) if some of these components will hosted in the cloud):
-- 1 x Jenkins
-  - Run [install-jenkins.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts) for setting this up.
-- 1 x Chef Infra Server/Chef Automate
-  - Run [install-chef-server.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-chef-server.sh).
-  - [Optional] Run [install-chef-automate.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-chef-automate.sh).
-- 2 (minimum) x Staging application environment
-  - Run [install-k8s-api-server.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-api-server.sh) on the k8s api-server machine.
-  - Run [install-k8s-worker.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-worker.sh) on the worker machines, it can also run on the api-server one.
-- 2 (minimum) x Production application environment
-  - Run [install-k8s-api-server.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-api-server.sh) on the k8s api-server machine.
-  - Run [install-k8s-worker.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-worker.sh) on the worker machines, it can also run on the api-server one.
-
-Before running any of the scripts above, **read carefully all the instructions and requirements written
-down as comments at beginning of each script**.
+Check the [README](https://github.com/kuritsu/pozoledf-chef-install/blob/main/README.md) on the
+`pozoledf-chef-install` repo.
 
 You will use your Chef Infra Server/Automate to monitor the status of your nodes,
 including the following aspects:
