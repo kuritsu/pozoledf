@@ -60,16 +60,16 @@ TODO: Add diagram.
 
 You will need the following machines running RHEL 7/CentOS 7 (we suggest you use [Terraform](https://www.terraform.io) if some of these components will hosted in the cloud):
 - 1 x Jenkins
-  - Run `install-jenkins.sh` [here](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts) for setting this up.
+  - Run [install-jenkins.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts) for setting this up.
 - 1 x Chef Infra Server/Chef Automate
-  - Run `install-chef-server.sh` [here](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-chef-server.sh).
-  - [Optional] Run `install-chef-automate.sh` [here](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-chef-automate.sh).
+  - Run [install-chef-server.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-chef-server.sh).
+  - [Optional] Run [install-chef-automate.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-chef-automate.sh).
 - 2 (minimum) x Staging application environment
-  - Run `install-k8s-api-server.sh` [here](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-api-server.sh) on the k8s api-server machine.
-  - Run `install-k8s-worker.sh` [here](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-worker.sh) on the worker machines, it can also be run on the api-server one.
+  - Run [install-k8s-api-server.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-api-server.sh) on the k8s api-server machine.
+  - Run [install-k8s-worker.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-worker.sh) on the worker machines, it can also run on the api-server one.
 - 2 (minimum) x Production application environment
-  - Run `install-k8s-api-server.sh` [here](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-api-server.sh) on the k8s api-server machine.
-  - Run `install-k8s-worker.sh` [here](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-worker.sh) on the worker machines, it can also be run on the api-server one.
+  - Run [install-k8s-api-server.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-api-server.sh) on the k8s api-server machine.
+  - Run [install-k8s-worker.sh](https://github.com/kuritsu/pozoledf-chef-install/tree/main/scripts/install-k8s-worker.sh) on the worker machines, it can also run on the api-server one.
 
 Before running any of the scripts below, **read carefully all the instructions and requirements written
 down as comments at beginning of each script**.
@@ -98,10 +98,10 @@ Your applications will follow an opinionated integration/deployment strategy.
   as a blueprint for your Kubernetes application configuration. Most of the config files there will
   need adjusting, but we suggest you try to use the [kustomize](https://kustomize.io)-ready files there
   to make it friendlier. You can always use additional K8S resources and plugins.
-- Use [pozoledf-sample-app-release] as a blueprint for your GitOps configuration for the release
-  deployments in your configured infrastructure. Remember to add this project to your Jenkins server,
-  it will need adjustments to your specific use case. Check on the repo README on how to create/configure
-  deployments.
+- Use [pozoledf-sample-app-release](https://github.com/kuritsu/pozoledf-sample-app-release) as
+  a blueprint for your GitOps configuration for the release deployments in your configured infrastructure.
+  Remember to add this project to your Jenkins server, it will need adjustments to your specific use case.
+  Check on the repo's README how to create/configure deployments.
 
 ## Contribution
 
