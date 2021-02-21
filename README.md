@@ -1,6 +1,7 @@
 # PozoleDF - Multiple On Premise Kubernetes Application Delivery Framework
 
-Why Pozole? Well, it was made in Mexico and PO (Private On-premise)-zole sounds like a fun related name, so there you go!
+Why Pozole? Well, it was made in Mexico and PO (Private On-premise)-zole sounds like a fun related name,
+and we certainly love pozole, so there you go!
 
 ## The Whys
 
@@ -52,7 +53,7 @@ This is the tech stack we use for this CI/CD solution:
 
 The following diagram shows the component relationship of the solution:
 
-TODO: Add diagram.
+![Network Architecture](network-architecture.png?raw=true "Network Architecture")
 
 ## How to use this framework?
 
