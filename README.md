@@ -99,7 +99,7 @@ Your applications will follow an opinionated integration/deployment strategy.
   need adjusting, but we suggest you try to use the [kustomize](https://kustomize.io)-ready files there
   to make it friendlier. You can always use additional K8S resources and plugins.
 - Use [pozoledf-sample-app-release](https://github.com/kuritsu/pozoledf-sample-app-release) as
-  a blueprint for your GitOps configuration for the release deployments in your configured infrastructure.
+  a blueprint for your GitOps configuration of the release deployments in your infrastructure.
   Remember to add this project to your Jenkins server, it will need adjustments to your specific use case.
   Check on the repo's README how to create/configure deployments.
 
