@@ -117,6 +117,7 @@ Please fork any of the repos of the framework and submit a PR.
 ## About the authors
 
 [Jeffrey Alvarez](https://github.com/kuritsu) is DevOps Tech Lead in Improving Nearshore (known as iTexico in Mexico).
+
 [Abraham Rivera](https://github.com/arivera0000) is a DevOps Engineer in Improving Nearshore.
 
 TODO: Fix Abraham Rivera's GitHub URL.
