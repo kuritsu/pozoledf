@@ -26,25 +26,29 @@ described above. We called it PozoleDF. It is formed by the following GitHub rep
   architectural and strategical documentation for the project.
 - [pozoledf-sample-app](https://github.com/kuritsu/pozoledf-sample-app). Contains a sample NodeJS
   Express application that will expose a health endpoint, so it will work fine as a Kubernetes
-  service. It will have everything needed to build a Docker image and a pipeline configuration to
-  build it and publish it to a Docker registry.
+  service. It will have everything needed to create a Docker image and a pipeline configuration to
+  build and publish it to a Docker registry.
 - [pozoledf-sample-app-deployment](https://github.com/kuritsu/pozoledf-sample-app-deployment). Contains
-  the simplest Kubernetes manifests needed to deploy/configure `sample-app` in Kubernetes. It will
-  also establish a mechanism for versioning.
-- [pozoledf-sample-app-release](https://github.com/kuritsu/pozoledf-sample-app-release). Contains
-  configuration files to determine the version of the app to be deployed in 2 different
-  environments: one close to development, and another similar to production. It will be based on
-  [Chef](https://chef.io) environments and run lists, so it will provide a GitOps opinionated
-  structure for application release deployments.
+  3 deployment configuration elements for the Sample App:
+  - A Chef cookbook to deploy the manifests in the Kubernetes controller.
+  - YAML file manifests needed to deploy/configure the app in Kubernetes.
+  - Environment configuration, to determine which versions of the app/cookbook will be deployed
+    in which environment.
+
+  For more details, check the README file of the repo.
 - [pozoledf-chef-install](https://github.com/kuritsu/pozoledf-chef-install). Contains scripts
   for installing and setting up [Chef](https://chef.io) servers and clients, that will glue
   most of the infrastructure components of the solution together.
+- [pozoledf-k8s-controller-chef](https://github.com/kuritsu/pozoledf-k8s-controller-chef). Contains
+  the Chef Cookbook to configure a Kubernetes controller node.
+- [pozoledf-k8s-worker-chef](https://github.com/kuritsu/pozoledf-k8s-worker-chef). Contains
+  the Chef Cookbook to configure a Kubernetes worker node.
 
 ## The Hows
 
 This is the tech stack we use for this CI/CD solution:
 
-- [GitHub](https://github.com)/Git: Source code repository management.
+- [GitHub](https://github.com)/Git: Source code repository management, versioning and release definition.
 - [Jenkins](https://www.jenkins.io): Continuous Integration and Delivery pipelines.
 - [Chef](https://chef.io): Configuration management/orchestration for on-premise infrastructure.
 - [Kubernetes](https://kubernetes.io): Container deployment and orchestration for on-premise applications.
@@ -82,14 +86,16 @@ Your applications will follow an opinionated integration/deployment strategy.
     - Static code analysis
     - Security analysis
     - Testing and code coverage
+
+  Keep in mind that when the main branch changes in this repo, the pipeline will trigger the
+  [release](https://github.com/kuritsu/pozoledf-sample-app-deployment) pipeline,
+  by creating a new release branch in that repository.
 - Use [pozoledf-sample-app-deployment](https://github.com/kuritsu/pozoledf-sample-app-deployment)
-  as a blueprint for your Kubernetes application configuration. Most of the config files there will
-  need adjusting, but we suggest you try to use the [kustomize](https://kustomize.io)-ready files there
-  to make it friendlier. You can always use additional K8S resources and plugins.
-- Use [pozoledf-sample-app-release](https://github.com/kuritsu/pozoledf-sample-app-release) as
-  a blueprint for your GitOps configuration of the release deployments in your infrastructure.
-  Remember to add this project to your Jenkins server, it will need adjustments to your specific use case.
-  Check on the repo's README how to create/configure deployments.
+  as a blueprint for your release and deployment configuration. Most of the config files there will
+  need adjusting, but we suggest you use the [kustomize](https://kustomize.io)-ready files there
+  to make it friendlier. You can always use additional K8S resources and plugins, as well
+  as changing the default Chef recipe to enrich the deployment steps. Check the README of the repo
+  for more details.
 
 ## Contribution
 
