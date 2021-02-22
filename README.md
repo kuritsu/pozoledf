@@ -39,6 +39,8 @@ described above. We called it PozoleDF. It is formed by the following GitHub rep
 - [pozoledf-chef-install](https://github.com/kuritsu/pozoledf-chef-install). Contains scripts
   for installing and setting up [Chef](https://chef.io) servers and clients, that will glue
   most of the infrastructure components of the solution together.
+- [pozoledf-jenkins-chef](https://github.com/kuritsu/pozoledf-jenkins-chef). Contains
+  the Chef Cookbook to configure a Jenkins server.
 - [pozoledf-k8s-controller-chef](https://github.com/kuritsu/pozoledf-k8s-controller-chef). Contains
   the Chef Cookbook to configure a Kubernetes controller node.
 - [pozoledf-k8s-worker-chef](https://github.com/kuritsu/pozoledf-k8s-worker-chef). Contains
