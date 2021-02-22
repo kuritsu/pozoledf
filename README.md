@@ -64,7 +64,7 @@ The following diagram shows the component relationship of the solution:
 ### Infrastructure
 
 Check the [README](https://github.com/kuritsu/pozoledf-chef-install/blob/main/README.md) on the
-`pozoledf-chef-install` repo.
+[pozoledf-chef-install](https://github.com/kuritsu/pozoledf-chef-install) repo.
 
 You will use your Chef Infra Server/Automate to monitor the status of your nodes,
 including the following aspects:
