@@ -113,4 +113,4 @@ Please fork any of the repos of the framework and submit a PR.
 
 [Jeffrey Alvarez](https://github.com/kuritsu) is DevOps Tech Lead in Improving Nearshore (known as iTexico in Mexico).
 
-[Abraham Rivera](https://github.com/Abraham83) is a DevOps Engineer in Improving Nearshore.
+[Abraham Rivera](https://github.com/sapiens83) is a DevOps Engineer in Improving Nearshore.
