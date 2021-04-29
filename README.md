@@ -86,9 +86,10 @@ Your applications will follow an opinionated integration/deployment strategy.
     - Static code analysis
     - Security analysis
     - Testing and code coverage
+
   Keep in mind that when the main branch changes in this repo, the pipeline will trigger the
-  [release](https://github.com/kuritsu/pozoledf-sample-app-deployment) pipeline,
-  by creating a new release branch in that repository.
+[release](https://github.com/kuritsu/pozoledf-sample-app-deployment) pipeline,
+by creating a new release branch in that repository.
 - Use [pozoledf-sample-app-deployment](https://github.com/kuritsu/pozoledf-sample-app-deployment)
   as a blueprint for your release and deployment configuration. Most of the config files there will
   need adjusting, but we suggest you use the [kustomize](https://kustomize.io)-ready files there
