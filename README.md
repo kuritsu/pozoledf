@@ -10,8 +10,10 @@ Your restrictions may vary, but this framework tries to address the following on
 
 - Cloud Agnostic: Sometimes you don't have permissions, or have limited access to cloud resources.
 - Least access possible from the internet: private on premise environments will need that, yes.
-- Pull model: private services will pull its configuration from external deployment
+- Pull model config: private services will pull its configuration from external deployment
   services, instead of updates being pushed to the private environments.
+- Push model telemetry: Deployed services and infrastructure will push their logs and metrics to the
+  monitoring dashboards and services.
 - Docker friendly: ah yes! Please do Docker apps.
 - Kubernetes friendly: ah yes! We need high availability, fault tolerance and container orchestration
   in our private environments.
@@ -24,27 +26,19 @@ described above. We called it PozoleDF. It is formed by the following GitHub rep
 
 - [pozoledf](https://github.com/kuritsu/pozoledf). The one you're using now. It will contain all
   architectural and strategical documentation for the project.
+- [pozoledf-chef-repo](https://github.com/kuritsu/pozoledf-chef-reo). This will provide the install
+  scripts together with the Chef cookbooks, policies and environment configuration. Check the README
+  for a guide on installing every node by role.
 - [pozoledf-sample-app](https://github.com/kuritsu/pozoledf-sample-app). Contains a sample NodeJS
   Express application that will expose a health endpoint, so it will work fine as a Kubernetes
   service. It will have everything needed to create a Docker image and a pipeline configuration to
   build and publish it to a Docker registry.
 - [pozoledf-sample-app-deployment](https://github.com/kuritsu/pozoledf-sample-app-deployment). Contains
   3 deployment configuration elements for the Sample App:
-  - A Chef cookbook to deploy the manifests in the Kubernetes controller.
+  - Chef Habitat package to deploy the manifests in the Kubernetes controller.
   - YAML file manifests needed to deploy/configure the app in Kubernetes.
-  - Environment configuration, to determine which versions of the app/cookbook will be deployed
-    in which environment.
-
-  For more details, check the README file of the repo.
-- [pozoledf-chef-install](https://github.com/kuritsu/pozoledf-chef-install). Contains scripts
-  for installing and setting up [Chef](https://chef.io) servers and clients, that will glue
-  most of the infrastructure components of the solution together.
-- [pozoledf-jenkins-chef](https://github.com/kuritsu/pozoledf-jenkins-chef). Contains
-  the Chef Cookbook to configure a Jenkins server.
-- [pozoledf-k8s-controller-chef](https://github.com/kuritsu/pozoledf-k8s-controller-chef). Contains
-  the Chef Cookbook to configure a Kubernetes controller node.
-- [pozoledf-k8s-worker-chef](https://github.com/kuritsu/pozoledf-k8s-worker-chef). Contains
-  the Chef Cookbook to configure a Kubernetes worker node.
+  - Environment configuration, to determine which versions of the app/package will be deployed
+    in which environment. For more details, check the README file of the repo.
 
 ## The Hows
 
@@ -52,9 +46,12 @@ This is the tech stack we use for this CI/CD solution:
 
 - [GitHub](https://github.com)/Git: Source code repository management, versioning and release definition.
 - [Jenkins](https://www.jenkins.io): Continuous Integration and Delivery pipelines.
-- [Chef](https://chef.io): Configuration management/orchestration for on-premise infrastructure.
+- [Chef Server Infra](https://www.chef.io/products/chef-infra): Configuration management/orchestration for on-premise infrastructure.
+- [Chef Habitat](https://www.chef.io/products/chef-habitat): Application building, packaging, versioning, and deployment.
+- [Chef Automate](https://www.chef.io/products/chef-automate): Visibility on the Chef Server Infra and Chef Habitat applications.
 - [Kubernetes](https://kubernetes.io): Container deployment and orchestration for on-premise applications.
 - [Docker Registry](https://docs.docker.com/registry/): Docker artifact repository.
+- [Grafana](https://grafana.com/), [ElasticSearch](https://www.elastic.co/elasticsearch/), [InfluxDB](https://www.influxdata.com/): Infrastructure, service and application monitoring/telemetry.
 - Linux: We will be using RHEL/CentOS specific tools for all our components.
 
 The following diagram shows the component relationship of the solution:
@@ -65,12 +62,13 @@ The following diagram shows the component relationship of the solution:
 
 ### Infrastructure
 
-Check the [README](https://github.com/kuritsu/pozoledf-chef-install/blob/main/README.md) on the
-[pozoledf-chef-install](https://github.com/kuritsu/pozoledf-chef-install) repo.
+Check the [README](https://github.com/kuritsu/pozoledf-chef-repo/blob/main/README.md) on the
+[pozoledf-chef-repo](https://github.com/kuritsu/pozoledf-chef-repo) repo.
 
 You will use your Chef Infra Server/Automate to monitor the status of your nodes,
 including the following aspects:
 - Jenkins installation and updates
+- Monitor server installation, which will contain Elasticsearch, InfluxDb and Grafana.
 - Application installation and updates, on each environment
 - Node active configurations
 
@@ -88,7 +86,6 @@ Your applications will follow an opinionated integration/deployment strategy.
     - Static code analysis
     - Security analysis
     - Testing and code coverage
-
   Keep in mind that when the main branch changes in this repo, the pipeline will trigger the
   [release](https://github.com/kuritsu/pozoledf-sample-app-deployment) pipeline,
   by creating a new release branch in that repository.
@@ -96,8 +93,10 @@ Your applications will follow an opinionated integration/deployment strategy.
   as a blueprint for your release and deployment configuration. Most of the config files there will
   need adjusting, but we suggest you use the [kustomize](https://kustomize.io)-ready files there
   to make it friendlier. You can always use additional K8S resources and plugins, as well
-  as changing the default Chef recipe to enrich the deployment steps. Check the README of the repo
+  as changing the default Chef Habitat package config to enrich the deployment steps. Check the README of the repo
   for more details.
+- Use [pozoledf-chef-repo](https://github.com/kuritsu/pozoledf-chef-repo) to define your
+  Chef cookbook for installing the application using Habitat and its supervisor running on the Kubernetes control plane. For an example check the `cookbooks/pozoledf-sample-app` directory of that repo. Note that that cookbook is already included on the `k8s-controller.json` inside the `roles` dir.
 
 ## Contribution
 
@@ -114,6 +113,4 @@ Please fork any of the repos of the framework and submit a PR.
 
 [Jeffrey Alvarez](https://github.com/kuritsu) is DevOps Tech Lead in Improving Nearshore (known as iTexico in Mexico).
 
-[Abraham Rivera](https://github.com/arivera0000) is a DevOps Engineer in Improving Nearshore.
-
-TODO: Fix Abraham Rivera's GitHub URL.
+[Abraham Rivera](https://github.com/Abraham83) is a DevOps Engineer in Improving Nearshore.
