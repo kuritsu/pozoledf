@@ -26,7 +26,7 @@ described above. We called it PozoleDF. It is formed by the following GitHub rep
 
 - [pozoledf](https://github.com/kuritsu/pozoledf). The one you're using now. It will contain all
   architectural and strategical documentation for the project.
-- [pozoledf-chef-repo](https://github.com/kuritsu/pozoledf-chef-reo). This will provide the install
+- [pozoledf-chef-repo](https://github.com/kuritsu/pozoledf-chef-repo). This will provide the install
   scripts together with the Chef cookbooks, policies and environment configuration. Check the README
   for a guide on installing every node by role.
 - [pozoledf-sample-app](https://github.com/kuritsu/pozoledf-sample-app). Contains a sample NodeJS
@@ -51,7 +51,7 @@ This is the tech stack we use for this CI/CD solution:
 - [Chef Automate](https://www.chef.io/products/chef-automate): Visibility on the Chef Server Infra and Chef Habitat applications.
 - [Kubernetes](https://kubernetes.io): Container deployment and orchestration for on-premise applications.
 - [Docker Registry](https://docs.docker.com/registry/): Docker artifact repository.
-- [Grafana](https://grafana.com/), [ElasticSearch](https://www.elastic.co/elasticsearch/), [InfluxDB](https://www.influxdata.com/): Infrastructure, service and application monitoring/telemetry.
+- [Grafana](https://grafana.com/), [Elasticsearch](https://www.elastic.co/elasticsearch/), [InfluxDB](https://www.influxdata.com/): Infrastructure, service and application monitoring/telemetry.
 - Linux: We will be using RHEL/CentOS specific tools for all our components.
 
 The following diagram shows the component relationship of the solution:
@@ -68,7 +68,7 @@ Check the [README](https://github.com/kuritsu/pozoledf-chef-repo/blob/main/READM
 You will use your Chef Infra Server/Automate to monitor the status of your nodes,
 including the following aspects:
 - Jenkins installation and updates
-- Monitor server installation, which will contain Elasticsearch, InfluxDb and Grafana.
+- Monitor server installation, which will contain Elasticsearch, InfluxDB and Grafana.
 - Application installation and updates, on each environment
 - Node active configurations
 
